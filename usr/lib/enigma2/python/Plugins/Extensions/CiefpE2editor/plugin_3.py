@@ -16,7 +16,7 @@ PLUGIN_VERSION = "1.4"
 WHITE_LIST_FILE = 'whitelist_streamrelay'
 WHITE_LIST_PATH = '/etc/enigma2/whitelist_streamrelay'
 USER_BOUQUET_DIR = '/etc/enigma2/'
-PLUGIN_ICON = "/usr/lib/enigma2/python/Plugins/Extensions/CiefpWhitelistStreamrelay/icon.png"
+PLUGIN_ICON = "/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/icon.png"
 
 # Target userbouquet configuration array
 USER_BOUQUETS = [
@@ -95,7 +95,7 @@ class WhitelistScreen(Screen):
         <widget name="description_box" position="60,90" size="1000,800" font="Regular;28" foregroundColor="#FFFFFF" backgroundColor="#011a2e" transparent="1" valign="top" zPosition="1" />
         
         <!-- Right Side Preview Image Frame Component -->
-        <widget name="logo" position="1100,90" size="800,800" zPosition="1" />
+        <widget name="logo_whitelist" position="1100,90" size="800,800" zPosition="1" />
         
         <!-- Bottom Process Output Line Status -->
         <widget name="status" position="60,920" size="1200,50" font="Regular;26" halign="left" valign="center" foregroundColor="#00FF00" backgroundColor="#011a2e" transparent="1" zPosition="1" />
@@ -115,7 +115,7 @@ class WhitelistScreen(Screen):
         
         self["plugin_title"] = Label("..:: Ciefp Whitelist Streamrelay ::.. (v1.4)")
         self["status"] = Label("Initializing background modules...")
-        self["logo"] = Pixmap()
+        self["logo_whitelist"] = Pixmap()
         
         self["key_red"] = Label("Close")
         self["key_green"] = Label("Process Data")
@@ -156,9 +156,9 @@ class WhitelistScreen(Screen):
         self.onLayoutFinish.append(self.set_logo)
 
     def set_logo(self):
-        logo_path = "/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/logo.png"
+        logo_path = "/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/logo_whitelist.png"
         if os.path.exists(logo_path):
-            self["logo"].instance.setPixmapFromFile(logo_path)
+            self["logo_whitelist"].instance.setPixmapFromFile(logo_path)
         else:
             self["status"].setText("Graphical asset 'logo.png' could not be resolved.")
             

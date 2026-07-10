@@ -3,7 +3,9 @@ from .plugin_channel_editor import CiefpChannelEditor, CiefpBouquetEditor, Ciefp
 from .plugin_select_satellite import CiefpSelectSatellite
 from .plugin_settings_downloader import CiefpSettingsDownloaderScreen
 from .plugin_satellites_xml_editor import CiefpSatelliteXmlReader
+from .plugin_settings_motor import CiefpSettingsScreen
 from .plugin_3 import WhitelistScreen
+from .plugin_caid_manager import CiefpCAIDManager
 from Plugins.Plugin import PluginDescriptor
 import os
 import re
@@ -19,7 +21,7 @@ from Screens.Screen import Screen
 from Tools.Directories import fileExists
 
 # Globalne varijable
-PLUGIN_VERSION = "1.9.1"
+PLUGIN_VERSION = "2.0"
 PLUGIN_NAME = "CiefpE2editor"
 PLUGIN_ICON = "icon.png"
 
@@ -838,18 +840,20 @@ class CiefpE2editorMain(Screen):
 
     def open_move_editor(self):
         choices = [
-            ("1. Ciefp Settings Downloader (GitHub liste)", "settings_downloader"),
-            ("2. Ciefp Satellites.xml Editor (Edit Transponders)", "satellites_editor"),
-            ("3. Ciefp Whitelist Streamrelay (Generate Whitelist)", "whitelist_streamrelay"),
-            ("--------------------------------------------------", "divider"),
-            ("Channel Editor (Move/Delete)", "channel_editor"),
-            ("Bouquet Editor (Move/Delete Bouquets)", "bouquet_editor"),
-            ("Channel Manager (Copy/Install)", "channel_manager"),
-            ("Satellite Selector (Select Satellite)", "satellite_selector")
+            ("Ciefp Settings Downloader (GitHub liste)", "settings_downloader"),
+            ("Ciefp Satellites.xml Editor (Edit Transponders)", "satellites_editor"),
+            ("Ciefp Whitelist Streamrelay (Generate Whitelist)", "whitelist_streamrelay"),
+            ("Ciefp Settings Motor (Download Motor Settings)", "settings_motor"),
+            ("Ciefp Channel Editor (Move/Delete)", "channel_editor"),
+            ("Ciefp Bouquet Editor (Move/Delete Bouquets)", "bouquet_editor"),
+            ("Ciefp Channel Manager (Copy/Install)", "channel_manager"),
+            ("Ciefp Select Satellite (Select Satellite)", "satellite_selector"),
+            ("Ciefp CAID Manager", "caid_manager")  # NOVA OPCIJA
         ]
         self.session.openWithCallback(self.main_menu_selected, ChoiceBox, title="Ciefp E2 Editor - Main Menu",
                                       list=choices)
 
+    # U metodi main_menu_selected, dodajte novi case:
     def main_menu_selected(self, choice):
         if not choice or len(choice) < 2:
             return
@@ -864,6 +868,8 @@ class CiefpE2editorMain(Screen):
             self.session.open(CiefpSatelliteXmlReader)
         elif action == "whitelist_streamrelay":
             self.session.open(WhitelistScreen)
+        elif action == "settings_motor":
+            self.session.open(CiefpSettingsScreen)
         elif action == "channel_editor":
             if self.current_bouquet_file:
                 self.session.open(CiefpChannelEditor, self.current_bouquet_file)
@@ -873,6 +879,8 @@ class CiefpE2editorMain(Screen):
             self.session.open(CiefpChannelManager)
         elif action == "satellite_selector":
             self.session.open(CiefpSelectSatellite)
+        elif action == "caid_manager":  # NOVA OPCIJA
+            self.session.open(CiefpCAIDManager)
 
     def exit(self):
         self.close()
