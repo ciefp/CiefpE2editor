@@ -45,21 +45,21 @@ class CiefpSelectSatellite(Screen):
     """Satellite Selector - Kreiranje prilagođene liste kanala"""
     
     skin = """
-        <screen position="center,center" size="1920,1080" title="..:: Ciefp Satellite Selector ::.." backgroundColor="#011a2e">
+        <screen position="center,center" size="1920,1080" backgroundColor="#011a2e">
+            <widget name="separator0" position="0,10" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="title" position="0,20" size="1920,50" font="Bold;40" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Satellite Selector ::.." />
-            
+            <widget name="separator1" position="0,80" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="left_list" position="50,90" size="600,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
             <widget name="right_list" position="650,90" size="600,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
             <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/background.png" position="1300,90" size="600,800" />
             
-            <widget name="status" position="50,960" size="1920,40" font="Regular;24" foregroundColor="#00FF00" backgroundColor="#012e01" />
-            
-            <widget name="red_button" position="50,1010" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#FFFFFF" text="Exit" />
-            <widget name="green_button" position="240,1010" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#FFFFFF" text="Copy" />
-            <widget name="yellow_button" position="430,1010" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" text="Install" />
-            <widget name="blue_button" position="620,1010" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#FFFFFF" text="Update" />
-            
-            <widget name="info" position="900,1010" size="950,40" font="Regular;24" halign="right" foregroundColor="#00FF00" backgroundColor="#011a2e" />
+            <widget name="status" position="50,950" size="950,40" font="Regular;24" halign="left" foregroundColor="#00FF00" backgroundColor="#012e01" />
+            <widget name="info" position="950,950" size="950,40" font="Regular;24" halign="right" foregroundColor="#00FF00" backgroundColor="#012e01" />
+            <widget name="separator3" position="0,990" size="1920,3" backgroundColor="#d5fa02" zPosition="1" />
+            <widget name="red_button" position="20,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F1313" foregroundColor="#000000" />
+            <widget name="green_button" position="490,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#1F771F" foregroundColor="#000000" />
+            <widget name="yellow_button" position="960,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" />
+            <widget name="blue_button" position="1430,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#13389F" foregroundColor="#000000" />
         </screen>
     """
 
@@ -80,7 +80,13 @@ class CiefpSelectSatellite(Screen):
         self["yellow_button"] = Label("Install")
         self["blue_button"] = Label("Update")
         self["info"] = Label(f"v{PLUGIN_VERSION}")
-        
+
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
+
         # Akcije
         self["actions"] = ActionMap(
             ["OkCancelActions", "ColorActions", "DirectionActions"],

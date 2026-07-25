@@ -52,17 +52,19 @@ class CiefpChannelEditor(Screen):
     
     # FHD Skin
     skin = """
-        <screen position="center,center" size="1920,1080" title="..:: Ciefp Channel Editor ::.." backgroundColor="#011a2e">
-            <widget name="channel_title" position="0,20" size="1920,50" font="Bold;40" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="Channel Editor" />
+        <screen position="center,center" size="1920,1080"  backgroundColor="#011a2e">
+            <widget name="separator0" position="0,10" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
+            <widget name="channel_title" position="0,20" size="1920,50" font="Bold;40" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Channel Editor ::.." />
+            <widget name="separator1" position="0,75" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="channel_list" position="50,80" size="1200,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
-            <widget name="status" position="50,950" size="1200,40" font="Regular;24" foregroundColor="#00FF00" backgroundColor="#011a2e" />
             <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/background.png" position="1300,90" size="600,800" />
-            <widget name="red_button" position="50,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#FFFFFF" text="Delete" />
-            <widget name="green_button" position="240,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#FFFFFF" text="Save" />
-            <widget name="yellow_button" position="430,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" text="Move Mode" />
-            <widget name="blue_button" position="620,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#FFFFFF" text="Select Group" />
-            <widget name="menu_button" position="810,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#777777" foregroundColor="#FFFFFF" text="Back" />
-            <widget name="info" position="900,950" size="900,40" font="Regular;30" halign="right" foregroundColor="#00FF00" backgroundColor="#011a2e" text="Move channels with arrows" />
+            <widget name="status" position="50,950" size="950,40" font="Regular;24" halign="left" foregroundColor="#00FF00" backgroundColor="#011a2e" />
+            <widget name="info" position="950,950" size="950,40" font="Regular;30" halign="right" foregroundColor="#00FF00" backgroundColor="#011a2e" text="Move channels with arrows" />
+            <widget name="separator3" position="0,990" size="1920,3" backgroundColor="#d5fa02" zPosition="1" />
+            <widget name="red_button" position="20,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F1313" foregroundColor="#000000" />
+            <widget name="green_button" position="490,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#1F771F" foregroundColor="#000000" />
+            <widget name="yellow_button" position="960,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" />
+            <widget name="blue_button" position="1430,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#13389F" foregroundColor="#000000" />
         </screen>
     """
 
@@ -81,7 +83,7 @@ class CiefpChannelEditor(Screen):
         self.bouquet_name = None
         
         # Widgeti
-        self["channel_title"] = Label("Channel Editor")
+        self["channel_title"] = Label("..:: Channel Editor ::..")
         self["channel_list"] = MenuList([])
         self["background"] = Pixmap()
         self["status"] = Label("Loading channels...")
@@ -91,7 +93,12 @@ class CiefpChannelEditor(Screen):
         self["blue_button"] = Label("Select Group")
         self["menu_button"] = Label("Back")
         self["info"] = Label("Move channels with arrows")
-        
+
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
         # Akcije
         self["actions"] = ActionMap(
             ["OkCancelActions", "ColorActions", "DirectionActions", "MenuActions"],
@@ -516,15 +523,18 @@ class CiefpBouquetEditor(Screen):
     """
     
     skin = """
-        <screen position="center,center" size="1920,1080" title="..:: Ciefp Bouquet Editor ::.." backgroundColor="#011a2e">
+        <screen position="center,center" size="1920,1080" backgroundColor="#011a2e">
+            <widget name="separator0" position="0,10" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="channel_title" position="0,20" size="1920,50" font="Bold;40" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Ciefp Bouquet Editor ::.." />
+            <widget name="separator1" position="0,80" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="bouquet_list" position="50,80" size="1200,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;28" backgroundColor="#011a2e" />
             <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/background.png" position="1300,90" size="600,800" />
-            <widget name="status" position="0,950" size="1920,50" font="Regular;24" backgroundColor="#012e01" />
-            <widget name="red_button" position="0,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#000000" />
-            <widget name="green_button" position="170,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#000000" />
-            <widget name="yellow_button" position="340,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" />
-            <widget name="blue_button" position="510,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#000000" />
+            <widget name="status" position="0,950" size="1920,40" font="Regular;24" backgroundColor="#012e01" />
+            <widget name="separator3" position="0,990" size="1920,3" backgroundColor="#d5fa02" zPosition="1" />
+            <widget name="red_button" position="20,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F1313" foregroundColor="#000000" />
+            <widget name="green_button" position="490,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#1F771F" foregroundColor="#000000" />
+            <widget name="yellow_button" position="960,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" />
+            <widget name="blue_button" position="1430,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#13389F" foregroundColor="#000000" />
         </screen>
     """
 
@@ -545,7 +555,13 @@ class CiefpBouquetEditor(Screen):
         self["green_button"] = Label("Save")
         self["yellow_button"] = Label("Move Mode")
         self["blue_button"] = Label("Channels")
-        
+
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
+
         self["actions"] = ActionMap(
             ["OkCancelActions", "ColorActions", "DirectionActions"],
             {
@@ -872,17 +888,20 @@ class CiefpChannelManager(Screen):
     """
 
     skin = """
-        <screen position="center,center" size="1920,1080" title="..:: Ciefp Channel Manager ::.." backgroundColor="#011a2e">
+        <screen position="center,center" size="1920,1080"  backgroundColor="#011a2e">
+            <widget name="separator0" position="0,10" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="channel_title" position="0,20" size="1920,50" font="Bold;40" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Ciefp Channel Manager ::.." />
+            <widget name="separator1" position="0,80" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="left_list" position="50,80" size="650,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;28" backgroundColor="#011a2e" />
             <widget name="right_list" position="630,80" size="650,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;28" backgroundColor="#011a2e" />
             <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/background.png" position="1300,90" size="600,800" />
-            <widget name="status" position="0,950" size="1920,50" font="Regular;24"  backgroundColor="#012e01"/>
-            <widget name="red_button" position="0,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#000000" />
-            <widget name="green_button" position="170,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#000000" />
-            <widget name="yellow_button" position="340,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" />
-            <widget name="blue_button" position="510,1000" size="150,35" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#000000" />
-            <widget name="version_info" position="680,1000" size="560,40" font="Regular;20" foregroundColor="#FFFFFF" backgroundColor="#011a2e"/>
+            <widget name="status" position="0,950" size="950,40" font="Regular;24"  backgroundColor="#012e01"/>
+            <widget name="version_info" position="950,950" size="950,40" font="Regular;30" halign="right" foregroundColor="#00FF00" backgroundColor="#012e01" text="Move channels with arrows" />
+            <widget name="separator3" position="0,990" size="1920,3" backgroundColor="#d5fa02" zPosition="1" />
+            <widget name="red_button" position="20,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F1313" foregroundColor="#000000" />
+            <widget name="green_button" position="490,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#1F771F" foregroundColor="#000000" />
+            <widget name="yellow_button" position="960,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" />
+            <widget name="blue_button" position="1430,1000" size="460,40" font="Bold;26" halign="center" backgroundColor="#13389F" foregroundColor="#000000" />
         </screen>
     """
 
@@ -904,6 +923,12 @@ class CiefpChannelManager(Screen):
         self["yellow_button"] = Label("Install")
         self["blue_button"] = Label("Editor")
         self["version_info"] = Label("")
+
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
 
         self["actions"] = ActionMap(
             ["OkCancelActions", "ColorActions"],

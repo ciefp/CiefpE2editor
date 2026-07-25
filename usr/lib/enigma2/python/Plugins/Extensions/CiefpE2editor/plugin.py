@@ -40,27 +40,29 @@ class CiefpE2editorMain(Screen):
     """Glavni ekran sa bezbednim čuvanjem IPTV/StreamRelay kanala i popravljenim filterom satelita"""
 
     skin = """
-        <screen position="center,center" size="1920,1080" title="..:: Ciefp E2 Editor ::.." backgroundColor="#011a2e">
+        <screen position="center,center" size="1920,1080" backgroundColor="#011a2e">
             <!-- Titule -->
+            <widget name="separator0" position="0,5" size="1920,3" backgroundColor="#d5fa02" zPosition="1" />  
             <widget name="plugin_title" position="0,10" size="1920,40" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Ciefp E2 Editor ::.." />
             <widget name="service_title" position="10,50" size="450,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="Service" />
-            <widget name="channel_title" position="470,50" size="900,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="Channels" />
-            <widget name="bouquet_title" position="1390,50" size="530,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="Bouquets" />
-
+            <widget name="channel_title" position="460,50" size="900,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="Channels" />
+            <widget name="bouquet_title" position="1360,50" size="530,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="Bouquets" />
+            <widget name="separator1" position="0,87" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <!-- Liste -->
             <widget name="service_list" position="20,90" size="450,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
             <widget name="channel_list" position="470,90" size="900,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
             <widget name="bouquet_list" position="1390,90" size="530,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
 
             <!-- Status -->
+            <widget name="separator2" position="0,950" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="status" position="10,950" size="1900,40" font="Regular;24"  backgroundColor="#011a2e" foregroundColor="#00FF00" />
-
+            <widget name="separator2" position="0,990" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <!-- Dugmad -->
-            <widget name="red_button" position="10,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#FFFFFF" text="Exit" />
-            <widget name="green_button" position="200,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#FFFFFF" text="Satellite" />
-            <widget name="yellow_button" position="390,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" text="Filters Menu" />
-            <widget name="blue_button" position="580,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#FFFFFF" text="Bouquets" />
-            <widget name="menu_button" position="770,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#777777" foregroundColor="#FFFFFF" text="MENU" />
+            <widget name="red_button" position="10,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#FFFFFF" text="Exit" />
+            <widget name="green_button" position="370,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#FFFFFF" text="Satellite" />
+            <widget name="yellow_button" position="740,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" text="Filters Menu" />
+            <widget name="blue_button" position="1110,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#FFFFFF" text="Bouquets" />
+            <widget name="menu_button" position="1480,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#777777" foregroundColor="#FFFFFF" text="MENU" />
 
             <!-- Info -->
             <widget name="info" position="900,950" size="900,40" font="Regular;30" halign="right" foregroundColor="#00FF00" backgroundColor="#011a2e" />
@@ -92,6 +94,12 @@ class CiefpE2editorMain(Screen):
         self["yellow_button"] = Label("Filters Menu")
         self["blue_button"] = Label("Bouquets")
         self["menu_button"] = Label("MENU")
+
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
 
         # Podaci
         self.all_services = []

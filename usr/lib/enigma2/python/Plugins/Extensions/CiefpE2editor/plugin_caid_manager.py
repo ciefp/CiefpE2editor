@@ -15,18 +15,21 @@ class CiefpCAIDManager(Screen):
     """CAID Manager - prikazuje CAID-ove za kanale sa satelita i iz buketa"""
     
     skin = """
-        <screen position="center,center" size="1920,1080" title="..:: Ciefp CAID Manager ::.." backgroundColor="#011a2e">
+        <screen position="center,center" size="1920,1080"  backgroundColor="#011a2e">
+            <widget name="separator0" position="0,5" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="plugin_title" position="0,10" size="1920,40" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Ciefp CAID Manager ::.." />
             <widget name="services_title" position="10,50" size="900,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="SERVICES - CAIDs" />
             <widget name="channels_title" position="950,50" size="950,35" font="Bold;30" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="CHANNELS - CAIDs" />
+            <widget name="separator1" position="0,87" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="services_list" position="20,90" size="900,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
-            <widget name="channels_list" position="940,90" size="960,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
+            <widget name="channels_list" position="920,90" size="980,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
             <widget name="status" position="10,950" size="1900,40" font="Regular;24" backgroundColor="#011a2e" foregroundColor="#00FF00" />
-            <widget name="red_button" position="10,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#FFFFFF" text="Exit" />
-            <widget name="green_button" position="200,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#FFFFFF" text="Satellite" />
-            <widget name="yellow_button" position="390,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" text="Provider / CAID" />
-            <widget name="blue_button" position="580,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#FFFFFF" text="Bouquets" />
-            <widget name="menu_button" position="770,1000" size="180,40" font="Bold;28" halign="center" backgroundColor="#777777" foregroundColor="#FFFFFF" text="MENU" />
+            <widget name="separator2" position="0,990" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
+            <widget name="red_button" position="10,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#9F1313" foregroundColor="#FFFFFF" text="Exit" />
+            <widget name="green_button" position="370,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#1F771F" foregroundColor="#FFFFFF" text="Satellite" />
+            <widget name="yellow_button" position="740,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#9F9F13" foregroundColor="#000000" text="Filters Menu" />
+            <widget name="blue_button" position="1110,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#1F1F77" foregroundColor="#FFFFFF" text="Bouquets" />
+            <widget name="menu_button" position="1480,1000" size="350,40" font="Bold;28" halign="center" backgroundColor="#777777" foregroundColor="#FFFFFF" text="MENU" />
             <widget name="info" position="900,950" size="900,40" font="Regular;30" halign="right" foregroundColor="#00FF00" backgroundColor="#011a2e" />
         </screen>
     """
@@ -40,11 +43,17 @@ class CiefpCAIDManager(Screen):
         self["channels_list"] = MenuList([])
         self["bouquet_list"] = MenuList([])
 
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
+
         self["plugin_title"] = Label("..:: Ciefp CAID Manager ::..")
         self["services_title"] = Label("SERVICES - CAIDs")
         self["channels_title"] = Label("CHANNELS - CAIDs")
         self["status"] = Label("Loading...")
-        self["info"] = Label("CAID Manager v1.0")
+        self["info"] = Label("CAID Manager v2.0")
 
         self["red_button"] = Label("Exit")
         self["green_button"] = Label("Satellite")

@@ -10,7 +10,7 @@ from Screens.Screen import Screen
 # Plugin identity parameters
 PLUGIN_NAME = "CiefpWhitelistStreamrelay"
 PLUGIN_DESC = "Creates a whitelist_streamrelay file from userbouquet data"
-PLUGIN_VERSION = "1.4"
+PLUGIN_VERSION = "1.5"
 
 # Configuration file paths
 WHITE_LIST_FILE = 'whitelist_streamrelay'
@@ -87,10 +87,11 @@ class WhitelistScreen(Screen):
     """Full HD Execution Interface for compiling hardware Streamrelay whitelists"""
 
     skin = """
-    <screen name="WhitelistScreen" position="center,center" size="1920,1080" title="..:: Ciefp Whitelist Streamrelay ::.." backgroundColor="#011a2e">
+    <screen name="WhitelistScreen" position="center,center" size="1920,1080" backgroundColor="#011a2e">
         <!-- Header Panel Title -->
-        <widget name="plugin_title" position="0,10" size="1920,45" font="Bold;32" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" zPosition="1" />
-        
+        <widget name="separator0" position="0,5" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
+        <widget name="plugin_title" position="0,10" size="1920,60" font="Bold;32" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" zPosition="1" />
+        <widget name="separator1" position="0,65" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
         <!-- Left Side Information Box Description -->
         <widget name="description_box" position="60,90" size="1000,800" font="Regular;28" foregroundColor="#FFFFFF" backgroundColor="#011a2e" transparent="1" valign="top" zPosition="1" />
         
@@ -106,6 +107,9 @@ class WhitelistScreen(Screen):
         
         <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/green.png" position="360,1000" size="40,40" alphatest="blend" zPosition="1" />
         <widget name="key_green" position="410,1000" size="250,40" font="Bold;28" halign="left" valign="center" transparent="1" foregroundColor="#FFFFFF" zPosition="1" />
+        
+        <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/blue.png" position="660,1000" size="40,40" alphatest="blend" zPosition="1" />
+        <widget name="key_blue" position="710,1000" size="250,40" font="Bold;28" halign="left" valign="center" transparent="1" foregroundColor="#FFFFFF" zPosition="1" />
     </screen>
     """
 
@@ -113,12 +117,19 @@ class WhitelistScreen(Screen):
         Screen.__init__(self, session)
         self.session = session
         
-        self["plugin_title"] = Label("..:: Ciefp Whitelist Streamrelay ::.. (v1.4)")
+        self["plugin_title"] = Label("..:: Ciefp Whitelist Streamrelay ::.. (v1.5)")
         self["status"] = Label("Initializing background modules...")
         self["logo_whitelist"] = Pixmap()
         
         self["key_red"] = Label("Close")
         self["key_green"] = Label("Process Data")
+        self["key_blue"] = Label("Restart Enigma2")
+
+        # Separatori
+        self["separator0"] = Label()
+        self["separator1"] = Label()
+        self["separator2"] = Label()
+        self["separator3"] = Label()
 
         # Static informational instructions block layout
         info_text = (
@@ -148,8 +159,9 @@ class WhitelistScreen(Screen):
             {
                 "cancel": self.close, 
                 "red": self.close,
-                "ok": self.restart_enigma,
-                "green": self.run_plugin
+                "ok": self.run_plugin,
+                "green": self.run_plugin,
+                "blue": self.restart_enigma
             }, 
             -1
         )
@@ -172,7 +184,7 @@ class WhitelistScreen(Screen):
             lines_created = create_whitelist_file()
 
             self["status"].setText(f"File created with {lines_created} stream nodes. Press OK to reboot GUI.")
-            self.session.open(MessageBox, f"Success!\n\nWhitelist generated with {lines_created} entries.\nPress OK to restart Enigma2 interface.", MessageBox.TYPE_INFO)
+            self.session.open(MessageBox, f"Success!\n\nWhitelist generated with {lines_created} entries.\nPress BLUE to restart Enigma2 interface.", MessageBox.TYPE_INFO)
         except Exception as e:
             self["status"].setText(f"Execution Error: {str(e)}")
 
