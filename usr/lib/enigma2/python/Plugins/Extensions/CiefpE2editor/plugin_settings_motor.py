@@ -37,7 +37,7 @@ def to_unicode(s):
 
 class CiefpSettingsScreen(Screen):
     skin = """
-    <screen name="CiefpSettingsScreen" position="center,center" size="1920,10800" backgroundColor="#011a2e" >
+    <screen name="CiefpSettingsScreen" position="center,center" size="1920,1080" backgroundColor="#011a2e" >
         <widget name="separator0" position="0,10" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
         <widget name="plugin_title" render="Label" position="0,20" size="1920,60" font="Regular;34" halign="center" valign="center" foregroundColor="#00FF00" title="..:: Ciefp Settings Motor ::.." backgroundColor="#050505" zPosition="3" />
         <widget name="separator1" position="0,87" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
