@@ -50,8 +50,8 @@ class CiefpSelectSatellite(Screen):
             <widget name="title" position="0,20" size="1920,50" font="Bold;40" halign="center" backgroundColor="#012e01" foregroundColor="#FFFFFF" text="..:: Satellite Selector ::.." />
             <widget name="separator1" position="0,80" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
             <widget name="left_list" position="50,90" size="600,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
-            <widget name="right_list" position="650,90" size="600,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
-            <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/background.png" position="1300,90" size="600,800" />
+            <widget name="right_list" position="670,90" size="600,858" scrollbarMode="showOnDemand" itemHeight="33" font="Regular;26" backgroundColor="#011a2e" />
+            <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/salectsatellite.png" position="1400,90" size="500,850" />
             
             <widget name="status" position="50,950" size="950,40" font="Regular;24" halign="left" foregroundColor="#00FF00" backgroundColor="#012e01" />
             <widget name="info" position="950,950" size="950,40" font="Regular;24" halign="right" foregroundColor="#00FF00" backgroundColor="#012e01" />

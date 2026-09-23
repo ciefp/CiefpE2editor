@@ -169,7 +169,7 @@ class CiefpSatelliteXmlReader(Screen):
             <convert type="StringList" />
         </widget>
         <widget name="separator1" position="0,75" size="1920,3" backgroundColor="#d5fa02" zPosition="1" /> 
-        <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpSatelliteXmlEditor/background.png" position="1400,100" size="500,900" zPosition="1" />
+        <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/satellitesxml.png" position="1450,100" size="450,900" zPosition="1" />
         <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/red.png" position="100,1000" size="40,40" alphatest="blend" />
         <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/green.png" position="350,1000" size="40,40" alphatest="blend" />
         <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/yellow.png" position="600,1000" size="40,40" alphatest="blend" />
@@ -731,7 +731,7 @@ class CiefpSatelliteXmlEditor(ConfigListScreen, Screen):
     <screen name="CiefpSatelliteXmlEditor" position="center,center" size="1920,1080"  backgroundColor="#011a2e">
         <widget name="title" render="Label" position="100,80" size="1600,60" font="Regular;34" halign="center" valign="center" foregroundColor="#00FF00" text="..:: Ciefp Satellites.xml Editor ::..  (Version{version})" backgroundColor="#050505" zPosition="3" />
         <widget name="config" position="100,150" size="1000,720" scrollbarMode="showOnDemand" itemHeight="36" font="Regular;26"  backgroundColor="#012e01" />
-        <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpSatelliteXmlEditor/background2.png" position="1100,150" size="600,800" zPosition="0" />
+        <widget name="background" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/CiefpE2editor/satellitesxml2.png" position="1100,150" size="600,800" zPosition="0" />
         <widget name="title2" render="Label" position="100,870" size="1000,80" font="Regular;34" halign="center" valign="center" foregroundColor="#ffffff" backgroundColor="#050505" zPosition="2" />
         <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/red.png" position="100,900" size="40,40" alphatest="blend" zPosition="2" />
         <ePixmap pixmap="/usr/share/enigma2/skin_default/buttons/green.png" position="350,900" size="40,40" alphatest="blend" zPosition="2" />

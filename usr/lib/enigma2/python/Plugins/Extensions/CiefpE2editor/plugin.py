@@ -5,6 +5,8 @@ from .plugin_settings_downloader import CiefpSettingsDownloaderScreen
 from .plugin_satellites_xml_editor import CiefpSatelliteXmlReader
 from .plugin_settings_motor import CiefpSettingsScreen
 from .plugin_3 import WhitelistScreen
+from .plugin_comparison import CiefpComparisonScreen   # ← NOVO
+from .plugin_ciefpsignalinfo import CiefpSignalInfoScreen
 from .plugin_caid_manager import CiefpCAIDManager
 from Plugins.Plugin import PluginDescriptor
 import os
@@ -21,7 +23,7 @@ from Screens.Screen import Screen
 from Tools.Directories import fileExists
 
 # Globalne varijable
-PLUGIN_VERSION = "2.0"
+PLUGIN_VERSION = "2.2"
 PLUGIN_NAME = "CiefpE2editor"
 PLUGIN_ICON = "icon.png"
 
@@ -856,9 +858,12 @@ class CiefpE2editorMain(Screen):
             ("Ciefp Bouquet Editor (Move/Delete Bouquets)", "bouquet_editor"),
             ("Ciefp Channel Manager (Copy/Install)", "channel_manager"),
             ("Ciefp Select Satellite (Select Satellite)", "satellite_selector"),
-            ("Ciefp CAID Manager", "caid_manager")  # NOVA OPCIJA
+            ("Ciefp CAID Manager", "caid_manager"),
+            ("Ciefp Settings Comparison (Diff GitHub vs Local)", "comparison"),
+            ("Ciefp Signal Info (Signal / SNR / AGC)", "signal_info"),   # ← NOVO
         ]
-        self.session.openWithCallback(self.main_menu_selected, ChoiceBox, title="Ciefp E2 Editor - Main Menu",
+        self.session.openWithCallback(self.main_menu_selected, ChoiceBox,
+                                      title="Ciefp E2 Editor - Main Menu",
                                       list=choices)
 
     # U metodi main_menu_selected, dodajte novi case:
@@ -887,8 +892,13 @@ class CiefpE2editorMain(Screen):
             self.session.open(CiefpChannelManager)
         elif action == "satellite_selector":
             self.session.open(CiefpSelectSatellite)
-        elif action == "caid_manager":  # NOVA OPCIJA
+        elif action == "caid_manager":
             self.session.open(CiefpCAIDManager)
+        elif action == "comparison":
+            from .plugin_comparison import CiefpComparisonScreen
+            self.session.open(CiefpComparisonScreen)
+        elif action == "signal_info":
+            self.session.open(CiefpSignalInfoScreen)    
 
     def exit(self):
         self.close()
