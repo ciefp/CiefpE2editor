@@ -656,7 +656,6 @@ class CiefpComparisonScreen(Screen):
                     lines.append("      {0}".format(service_to_name(svc, old_lamedb)))
                 if len(removed) > MAX_SERVICES_PER_BOUQUET:
                     lines.append("      ... and {0} more".format(len(removed) - MAX_SERVICES_PER_BOUQUET))
-
         if changed_count == 0 and not new_bouquet_files and not removed_bouquet_files:
             lines.append("")
             lines.append("  No changes detected.")
@@ -677,6 +676,9 @@ class CiefpComparisonScreen(Screen):
             if total_markers_added or total_markers_removed:
                 lines.append("    ↳ Markers:     +{0}  |  -{1}".format(
                     total_markers_added, total_markers_removed))
+
+        lines.append("")
+        lines.append("##### Created by CiefpE2editor - Ciefp Settings Comparison #####")
 
         return "\n".join(lines)
 
